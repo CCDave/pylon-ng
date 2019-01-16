@@ -47,10 +47,15 @@ class XFastSQLExecutor
 
     public function reconnect()
     {
-        $db_info = $this->_dbh->getAttribute(PDO::ATTR_SERVER_INFO);
-        if($db_info == "MySQL server has gone away")
-        {
-            $this->connect();
+        try {
+            $db_info = $this->_dbh->getAttribute(PDO::ATTR_SERVER_INFO);
+            if(strstr($db_info, 'MySQL server has gone away') !== FALSE){
+                $this->connect();
+            }
+        } catch (\Exception $e){
+            if (strstr($e->getMessage(), 'MySQL server has gone away') !== FALSE) {
+                $this->connect();
+            }
         }
     }
 
