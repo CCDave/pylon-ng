@@ -171,4 +171,20 @@ class NOXEntity extends pylon\impl\XEntityBase
         static::regist($obj) ;
         return $obj;
     }
+
+    static public function loadEntity($cls,$array,$mappingStg,$clsmap=array())
+    {
+        $xid    = NOXID::load($array);
+        $prop   = $mappingStg->buildEntityProp($array);
+        $entity = new $cls($xid,$prop);
+        return  static::unitWork()->regLoad($entity);
+    }
+    static public function loadEntity2($cls,$array,$oprop,$mappingStg,$clsName=array())
+    {
+        $xid    = NOXID::load($array);
+        $prop   = $mappingStg->buildEntityProp($array);
+        $prop->merge($oprop);
+        $entity = new $cls($xid,$prop);
+        return  static::unitWork()->regLoad($entity);
+    }
 }

@@ -4,6 +4,7 @@ use XDBC ;
 use XBox ;
 use XEntity ;
 use XPylon ;
+use NOXEntity;
 // use pylon\impl\SqlProcUtls ;
 /**\addtogroup Ent
  * @{
@@ -363,6 +364,18 @@ class DaoImp extends DaoBase implements XDao
             else
             {
                 $obj = XEntity::loadEntity($cls,$row,$this->mappingStg);
+            }
+        }
+        else if(DaoBase::cls_is_a('NOXEntity',$cls))
+        {
+
+            if(method_exists($cls,'load'))
+            {
+                $obj = call_user_func(array($cls,'load'),$row,$this->mappingStg);
+            }
+            else
+            {
+                $obj = NOXEntity::loadEntity($cls,$row,$this->mappingStg);
             }
         }
         else if(DaoBase::cls_is_a('pylon\impl\Relation',$cls))
