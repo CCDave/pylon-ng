@@ -6,6 +6,8 @@ use XDBC ;
 use XEntity ;
 use XSetting ;
 use XDBCException ;
+use NOXEntity;
+
 class StdMapping implements IMappingStg
 {
     static private $ins=null;
@@ -29,9 +31,14 @@ class StdMapping implements IMappingStg
                 {
                     $dtovars[$key."__".strtolower($val->getClass())]=  null;
                 }
-                elseif( $val instanceof  XEntity)
+                elseif( $val instanceof  XEntity || $val instanceof  NOXEntity)
                 {
                     $dtovars[$key."__".strtolower(get_class($val))]= $val->id();
+                }
+
+                elseif( $val instanceof  NOXID)
+                {
+                    $subdtos[] = XProperty::fromArray($val->getPropArray());
                 }
                 elseif( $val instanceof  XID)
                 {

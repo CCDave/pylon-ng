@@ -54,6 +54,42 @@ class  XID extends XProperty
         $this->ver += 1;
     }
 }
+
+/**
+ * @brief  实体ID
+ */
+class  NOXID extends XProperty
+{
+    public function __construct($id)
+    {
+        $this->id         = $id;
+    }
+    /**
+     * @brief 根据$idname产生的 ID 创建.
+     *
+     * @param $idname
+     *
+     * @return
+     */
+    static public function create($idname='other')
+    {
+
+        $id= EntityUtls::createPureID($idname);
+        return new NOXID($id);
+    }
+    public static function load(&$array)
+    {
+        $id = new NOXID(intval($array['id']));
+        unset($array['id']);
+        return $id;
+    }
+    public function upgrade()
+    {
+
+    }
+}
+
+
 /**
  * @brief  实体基类，自己定义的实体必须继承它
  */
