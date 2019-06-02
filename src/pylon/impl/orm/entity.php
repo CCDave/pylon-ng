@@ -73,7 +73,6 @@ class  NOXID extends XProperty
      */
     static public function create($idname='other')
     {
-
         $id= EntityUtls::createPureID($idname);
         return new NOXID($id);
     }

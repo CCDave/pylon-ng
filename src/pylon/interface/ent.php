@@ -11,8 +11,7 @@ use pylon\impl\SimpleMapping ;
 use pylon\impl\StdMapping ;
 use pylon\impl\DaoImp ;
 use pylon\impl\XID ;
-use pylon\impl\NOXID ;
-
+use pylon\impl\NOXID;
 use pylon\impl\DQLObj ;
 
 
@@ -172,6 +171,7 @@ class NOXEntity extends pylon\impl\XEntityBase
         return $obj;
     }
 
+
     static public function loadEntity($cls,$array,$mappingStg,$clsmap=array())
     {
         $xid    = NOXID::load($array);
@@ -179,6 +179,7 @@ class NOXEntity extends pylon\impl\XEntityBase
         $entity = new $cls($xid,$prop);
         return  static::unitWork()->regLoad($entity);
     }
+
     static public function loadEntity2($cls,$array,$oprop,$mappingStg,$clsName=array())
     {
         $xid    = NOXID::load($array);
@@ -187,4 +188,5 @@ class NOXEntity extends pylon\impl\XEntityBase
         $entity = new $cls($xid,$prop);
         return  static::unitWork()->regLoad($entity);
     }
+
 }

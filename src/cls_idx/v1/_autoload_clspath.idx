@@ -2,6 +2,7 @@ DBC,/compatible/v1/old.php
 Debug,/compatible/v1/old.php
 FastSQLExecutor,/compatible/v1/old.php
 LZLExecutor,/compatible/v1/old.php
+NOXEntity,/pylon/interface/ent.php
 pylon\driver\FastRouter,/pylon/driver/rest_finder.php
 pylon\driver\IDGenterSvcImp,/pylon/driver/idgenerator.php
 pylon\driver\MySqlIDGenerator,/pylon/driver/idgenerator.php
@@ -35,6 +36,7 @@ pylon\impl\Lockable,/pylon/impl/basesvc/locks.php
 pylon\impl\LockUtil,/pylon/impl/basesvc/locks.php
 pylon\impl\MappingUtls,/pylon/impl/orm/entity.php
 pylon\impl\MemCollectLogger,/pylon/impl/utls/logutls.php
+pylon\impl\NOXID,/pylon/impl/orm/entity.php
 pylon\impl\NullEntity,/pylon/impl/orm/other.php
 pylon\impl\ObjectSet,/pylon/impl/orm/relation.php
 pylon\impl\ObjUpdater,/pylon/impl/orm/obj_update.php
