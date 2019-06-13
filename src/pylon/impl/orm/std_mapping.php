@@ -1,5 +1,6 @@
 <?php
 namespace pylon\impl ;
+use XCC\MLogKit;
 use XProperty ;
 use XBox ;
 use XDBC ;

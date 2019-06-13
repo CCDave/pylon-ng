@@ -4,6 +4,7 @@ use XProperty ;
 use XBox ;
 use XDBC ;
 use XEntity ;
+use NOXEntity;
 use XSetting ;
 use XDBCException ;
 
@@ -222,11 +223,14 @@ class SimpleMapping implements IMappingStg
             {
                 $dtovars[$key."__id"]= null;
             }
-            elseif(is_object($val) && ( $val instanceof  XEntity  || $val instanceof LDProxy))
+            elseif(is_object($val) &&
+                ( $val instanceof  XEntity  ||
+                    $val instanceof LDProxy ||
+                    $val instanceof NOXEntity))
             {
                 $dtovars[$key."__id"]= $val->id();
             }
-            else if(is_object($val) && $val instanceof  XID)
+            else if(is_object($val) && ($val instanceof  XID || $val instanceof  NOXID))
             {
                 $subdtos[] = XProperty::fromArray($val->getPropArray());
             }
