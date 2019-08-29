@@ -289,13 +289,15 @@ class XHttpCaller
 
     private function bindCaller($url)
     {
-        if(strstr($url,'?'))
-        {
-            $url = "$url&_caller=" . $this->conf->caller ;
-        }
-        else
-        {
-            $url = $url . "?_caller=" . $this->conf->caller;
+        if ($this->conf->bNoCaller){
+            if(strstr($url,'?'))
+            {
+                $url = "$url&_caller=" . $this->conf->caller ;
+            }
+            else
+            {
+                $url = $url . "?_caller=" . $this->conf->caller;
+            }
         }
         return $url;
     }
